@@ -19,4 +19,13 @@ AlunoRouter.get('/alunoid', async (req, res) => {
     }
 });
 
+AlunoRouter.delete('/aluno', async (req, res) => {
+    try {
+        await Aluno.deleteOne({email: req.body.email});
+        res.json({mensagem: 'Aluno excluído'}); 
+    } catch (error) {
+        res.json({mensagem: 'Erro na exclusão'});
+    }
+});
+
 module.exports = AlunoRouter;
